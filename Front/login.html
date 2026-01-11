@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="screen">
+
+    <!-- Декор сверху -->
+    <div class="circles-top">
+        <div class="circle green"></div>
+        <div class="circle pink"></div>
+        <div class="circle orange"></div>
+    </div>
+
+    <!-- Контент -->
+    <div class="content">
+        <a href="index.html" class="back">←</a>
+
+        <h1>Авторизация</h1>
+        <p class="subtitle">Введите номер телефона</p>
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="+7 (000) 000 00 00"
+            maxlength="18"
+        />
+
+        <button id="sendCodeBtn" class="btn">Получить код</button>
+    </div>
+
+    <!-- Декор снизу -->
+    <div class="circles-bottom">
+        <div class="circle green"></div>
+        <div class="circle pink"></div>
+        <div class="circle orange"></div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+const input = document.getElementById('phone');
+
+function formatPhone(value) {
+    let digits = value.replace(/\D/g, '');
+
+    if (digits.startsWith('8')) {
+        digits = '7' + digits.slice(1);
+    }
+
+    if (!digits.startsWith('7')) {
+        digits = '7' + digits;
+    }
+
+    digits = digits.slice(0, 11);
+
+    let result = '+7';
+
+    if (digits.length > 1) result += ' (' + digits.slice(1, 4);
+    if (digits.length >= 4) result += ') ' + digits.slice(4, 7);
+    if (digits.length >= 7) result += ' ' + digits.slice(7, 9);
+    if (digits.length >= 9) result += ' ' + digits.slice(9, 11);
+
+    return result;
+}
+
+input.addEventListener('input', () => {
+    input.value = formatPhone(input.value);
+});
+
+input.addEventListener('keydown', (e) => {
+    if (e.key !== 'Backspace') return;
+
+    const pos = input.selectionStart;
+
+    // если удаляем форматный символ — сдвигаемся влево
+    if (pos > 0 && /\D/.test(input.value[pos - 1])) {
+        e.preventDefault();
+        input.setSelectionRange(pos - 1, pos - 1);
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        document.querySelector('.btn').click();
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+document.getElementById('sendCodeBtn').addEventListener('click', () => {
+    const phone = document.getElementById('phone').value;
+
+    if (phone.length < 18) {
+        alert('Введите номер телефона полностью');
+        return;
+    }
+
+    // сохраняем телефон
+    localStorage.setItem('authPhone', phone);
+
+    // переходим к вводу кода
+    window.location.href = 'login2.html';
+});
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ПОСМОТРИМ.</title>
+    <link rel="stylesheet" href="style_index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">ПОСМОТРИМ.</div>
+    <div class="header-buttons">
+            <button id="authButton" class="btn">Войти</button>
+        <button class="btn">Контакты</button>
+    </div>
+</header>
+
+<!-- Контент -->
+
+<main class="content">
+    <div class="title_content">Афиша</div>
+    <section class="cards">
+        <div class="card">
+            <div class="image img-1" id="hovers"></div>
+            <h3>Фильм раз</h3>
+            <p>Самый лучший фильм</p>
+        </div>
+
+        <div class="card">
+            <div class="image img-2" id="hovers"></div>
+            <h3>Театр два</h3>
+            <p>Говорят здесь очень красиво</p>
+        </div>
+
+        <div class="card">
+            <div class="image img-3" id="hovers"></div>
+            <h3>Выставка три</h3>
+            <p>Что-то нереальное</p>
+        </div>
+    </section>
+</main>
+
+<!-- Контент -->
+
+<!-- МОДАЛЬНОЕ ОКНО ЛИЧНОГО КАБИНЕТА -->
+
+<div id="cabinetModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Личный кабинет</h2>
+
+    <div class="tickets-wrapper">
+      <div class="tickets-scroll" id="ticketsScroll">
+        <div class="ticket-card">
+          <img src="img/zootopia.jpg">
+          <div class="ticket-info">10 октября — 19:30</div>
+          <div class="ticket-genre">Мультфильм</div>
+          <button class="ticket-btn">Показать билет</button>
+        </div>
+
+        <div class="ticket-card">
+          <img src="img/zootopia.jpg">
+          <div class="ticket-info">10 октября — 19:30</div>
+          <div class="ticket-genre">Мультфильм</div>
+          <button class="ticket-btn">Показать билет</button>
+        </div>
+
+        <div class="ticket-card">
+          <img src="img/zootopia.jpg">
+          <div class="ticket-info">10 октября — 19:30</div>
+          <div class="ticket-genre">Мультфильм</div>
+          <button class="ticket-btn">Показать билет</button>
+        </div>
+      </div>
+
+      <div class="arrow" id="arrowRight">›</div>
+    </div>
+
+    <button id="logoutBtn" class="logout-btn">Выйти</button>
+  </div>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО ЛИЧНОГО КАБИНЕТА -->
+
+<!-- ФУТЕР -->
+<footer class="footer">
+    <div>Как всегда, посмотрим.</div>
+    <div class="socials">
+        <span>social media</span>
+    </div>
+</footer>
+<!-- ФУТЕР -->
+
+
+
+<!-- СКРИПТЫ -->
+
+
+<!-- ИЗМЕНЕНИЕ КНОПКИ ВХОДА В ЗАВИСИМОСТИ ОТ АВТОРИЗАЦИИ  -->
+<script>
+function updateAuthUI() {
+    authButton.textContent =
+        localStorage.getItem('isAuth') === 'true'
+        ? 'Личный кабинет'
+        : 'Войти';
+}
+
+updateAuthUI();
+
+authButton.addEventListener('click', () => {
+    if (localStorage.getItem('isAuth') === 'true') {
+        openCabinet();
+    } else {
+        window.location.href = 'login.html';
+    }
+});
+</script>
+<!-- ИЗМЕНЕНИЕ КНОПКИ ВХОДА В ЗАВИСИМОСТИ ОТ АВТОРИЗАЦИИ  -->
+
+
+
+
+
+
+
+<!-- ПЕРЕХОД В LOGIN ИЛИ ОТКРЫТИЕ КАБИНЕТА -->
+<script>
+const authButton = document.getElementById('authButton');
+const modal = document.getElementById('cabinetModal');
+const closeBtn = document.querySelector('.close');
+const logoutBtn = document.getElementById('logoutBtn');
+
+function updateAuthUI() {
+    authButton.textContent =
+        localStorage.getItem('isAuth') === 'true'
+        ? 'Личный кабинет'
+        : 'Войти';
+}
+
+updateAuthUI();
+
+authButton.addEventListener('click', () => {
+    if (localStorage.getItem('isAuth') === 'true') {
+        modal.classList.remove('hidden');
+    } else {
+        window.location.href = 'login.html';
+    }
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+});
+
+logoutBtn.addEventListener('click', () => {
+    localStorage.setItem('isAuth', 'false');
+    modal.classList.add('hidden');
+    updateAuthUI();
+});
+</script>
+<!-- ПЕРЕХОД В LOGIN ИЛИ ОТКРЫТИЕ КАБИНЕТА -->
+
+
+<!-- ЛОГИКА МОДАЛКИ ЛИЧНОГО КАБИНЕТА -->
+<script>
+const ticketsScroll = document.getElementById('ticketsScroll');
+const arrowRight = document.getElementById('arrowRight');
+
+function updateAuthUI() {
+  authButton.textContent =
+    localStorage.getItem('isAuth') === 'true'
+    ? 'Личный кабинет'
+    : 'Войти';
+}
+
+updateAuthUI();
+
+authButton.addEventListener('click', () => {
+  if (localStorage.getItem('isAuth') === 'true') {
+    modal.classList.remove('hidden');
+  } else {
+    window.location.href = 'login.html';
+  }
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.add('hidden');
+});
+
+logoutBtn.addEventListener('click', () => {
+  localStorage.setItem('isAuth', 'false');
+  modal.classList.add('hidden');
+  updateAuthUI();
+});
+
+/* --- СКРОЛЛ ПО СТРЕЛКЕ --- */
+arrowRight.addEventListener('click', () => {
+  ticketsScroll.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+/* --- ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ КОЛЕСИКОМ --- */
+ticketsScroll.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  ticketsScroll.scrollLeft += e.deltaY;
+});
+</script>
+<!-- ЛОГИКА МОДАЛКИ ЛИЧНОГО КАБИНЕТА -->
+</body>
+</html>

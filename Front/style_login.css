@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    background: #fff;
+    height: 100vh;
+}
+
+/* Экран */
+
+.screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Круги */
+
+.circles {
+    position: fixed;
+    left: 50vw;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.circles-top {
+    position: fixed;
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 360px;
+    z-index: 1;
+}
+
+.circles-bottom {
+    position: fixed;
+    bottom: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 360px;
+    z-index: 1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 20px solid;
+    pointer-events: none;
+}
+
+.green {
+    width: 360px;
+    height: 360px;
+    border-color: #9fbfb3;
+    top: 0;
+    left: 0;
+}
+
+.pink {
+    width: 280px;
+    height: 280px;
+    border-color: #ffd1cc;
+    top: 40px;
+    left: 40px;
+}
+
+.orange {
+    width: 200px;
+    height: 200px;
+    border-color: #ff6a00;
+    top: 80px;
+    left: 80px;
+}
+
+/* Контент */
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 320px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.back {
+    position: absolute;
+    left: -40px;
+    top: 6px;
+    font-size: 24px;
+    color: #888;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.back:hover {
+    transform: translateX(-4px);
+    color: #000;
+}
+
+.back:active {
+    transform: translateX(-2px);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 14px;
+    padding: 0 16px;
+    font-size: 16px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    caret-color: #000;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+.btn {
+    display: inline-block;
+    width: 240px;
+    padding: 14px 0;
+    background: #000;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
