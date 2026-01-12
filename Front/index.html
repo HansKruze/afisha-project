@@ -196,12 +196,12 @@ logoutBtn.addEventListener('click', () => {
   updateAuthUI();
 });
 
-/* --- СКРОЛЛ ПО СТРЕЛКЕ --- */
+// СКРОЛЛ ПО СТРЕЛКЕ
 arrowRight.addEventListener('click', () => {
   ticketsScroll.scrollBy({ left: 300, behavior: 'smooth' });
 });
 
-/* --- ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ КОЛЕСИКОМ --- */
+// ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ КОЛЕСИКОМ
 ticketsScroll.addEventListener('wheel', (e) => {
   e.preventDefault();
   ticketsScroll.scrollLeft += e.deltaY;

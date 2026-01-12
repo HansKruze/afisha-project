@@ -11,16 +11,12 @@ body {
     height: 100vh;
 }
 
-/* Экран */
-
 .screen {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-
-/* Круги */
 
 .circles {
     position: fixed;
@@ -79,8 +75,6 @@ body {
     top: 80px;
     left: 80px;
 }
-
-/* Контент */
 
 .content {
     position: relative;

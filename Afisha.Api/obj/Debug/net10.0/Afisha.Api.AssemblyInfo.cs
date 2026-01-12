@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Afisha.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65ec5e7b7e459e17dc7d7cfb698c10626281fc9a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+878614b6bd23c98a5b299e837093f45f394578bc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Afisha.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Afisha.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
